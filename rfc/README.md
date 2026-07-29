@@ -31,14 +31,14 @@ format adds another standard only after review proves it is applicable.
 - `SHA256SUMS` pins every exact file.
 - `scripts/fetch-rfcs.sh` downloads only missing allowlisted HTTPS sources and
   verifies their expected digest before installation.
-- `scripts/verify-rfcs.sh` rejects missing, extra, empty, changed, or writable
-  files.
-- `scripts/lock-rfcs.sh` reapplies the local read-only guard.
+- `scripts/verify-rfcs.sh` rejects missing, extra, empty, or changed files.
+- `scripts/lock-rfcs.sh` optionally reapplies a local read-only hardening guard.
 - `scripts/test-rfc-sources.py` tests the complete baseline.
 - `.gitattributes` disables line-ending normalization for the RFC text.
 
 Git does not portably preserve read-only permissions, so checksums remain the
-authoritative integrity control.
+authoritative integrity control. A fresh checkout being owner-writable is
+expected and does not weaken checksum verification.
 
 ## Update Procedure
 

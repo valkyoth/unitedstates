@@ -11,8 +11,10 @@ Requirements:
 
 - use only HTTPS RFC Editor URLs listed in `rfc/SOURCES`;
 - keep RFC text byte-for-byte unmodified;
-- reject missing, extra, changed, empty, or writable local RFC text;
+- reject missing, extra, changed, or empty local RFC text by exact checksum;
 - prevent Git line-ending normalization with `.gitattributes`;
+- treat `scripts/lock-rfcs.sh` as optional local hardening because Git cannot
+  preserve read-only file bits across checkouts;
 - review source-list and checksum changes together;
 - record implementation notes and errata decisions separately;
 - map applicable normative requirements during the milestone that implements

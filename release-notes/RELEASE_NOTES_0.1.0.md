@@ -37,6 +37,9 @@ converge to `1.0.0`.
 - A repository identity check rejects copied source-project names.
 - Shell validation respects declared POSIX shell and Bash interpreters, and
   policy gates require no optional ripgrep installation on clean CI runners.
+- RFC integrity uses exact checksums rather than non-portable read-only
+  filesystem modes; writable fresh checkouts and tampered bytes are both
+  regression-tested.
 
 ## Verification Required
 
