@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -eu
 
-old_identity='swe''den|swed''ish|trafik''verket|SWE''-[0-9]'
+old_identity='swe''den|swed''ish|trafik''verket|SWE''-[0-9]|Europe/Stock''holm'
 identity_root="${IDENTITY_ROOT:-.}"
 
 if rg -n -i "$old_identity" "$identity_root" \

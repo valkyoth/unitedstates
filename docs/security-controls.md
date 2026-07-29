@@ -85,6 +85,20 @@ to [API_CAPABILITY_MATRIX.md](API_CAPABILITY_MATRIX.md).
 - Data classification, attribution, transformation, export, retention, and
   fixture rules travel with policy/provenance through project-owned paths.
 
+## Build Profile Scope
+
+`overflow-checks = true` and `panic = "abort"` in this workspace's
+`[profile.release]` harden only builds for which this workspace is the root,
+including its release verification in CI. Cargo does not apply a dependency
+crate's profile settings when a downstream application consumes the library.
+Downstream binaries control their own panic and overflow profiles.
+
+The protection shipped in this library's source is the
+`clippy::arithmetic_side_effects = "forbid"` policy enforced by CI. It prevents
+unchecked arithmetic from being admitted here; the workspace profile is
+defense in depth for repository-owned builds, not a runtime guarantee to
+consumers.
+
 ## Scope Controls
 
 The 1.0 build contains no XML or CSV codec and no NLR XML, CSV, GeoJSON

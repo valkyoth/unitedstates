@@ -175,6 +175,10 @@ review, adversarial tests, and explicit release admission.
 - After results cross the SDK boundary, caller code can copy, log, retain,
   transform, or redistribute them.
 - Compilation for a platform does not prove its caller-provided networking.
+- Workspace release-profile settings do not propagate when these crates are
+  dependencies. Downstream applications select their own panic and overflow
+  behavior; repository CI's source-level arithmetic policy is the portable
+  library control.
 
 Residual risks must remain visible in source docs and release notes; they are
 not erased by adding a trait or policy type.

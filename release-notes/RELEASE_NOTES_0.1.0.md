@@ -1,6 +1,6 @@
 # United States 0.1.0 Release Notes
 
-Status: implementation complete; awaiting maintainer pentest
+Status: implementation complete; pentest passed
 
 ## Scope
 
@@ -45,11 +45,12 @@ cargo deny check
 cargo audit
 ```
 
-The local implementation gate passes. The repository is freshly initialized,
-so inherited pentest claims and commit hashes are invalid. The permanent
-report is `Status: AWAITING PENTEST`. GitHub Actions, CodeQL default setup, and
-tagging follow only after this repository's maintainer pentest reaches
-`Status: PASS`.
+The local implementation gate passes. The maintainer assessment reported two
+low-severity hardening findings: unclear downstream scope for workspace release
+profiles and a source-template timezone in Dependabot. Both are remediated,
+regression-checked, and recorded in the permanent `Status: PASS` report.
+GitHub Actions and CodeQL default setup must now be green before the maintainer
+requests tagging.
 
 ## Known Limitations
 
