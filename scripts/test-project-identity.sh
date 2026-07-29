@@ -10,6 +10,11 @@ printf '%s\n' '# United States' >"$test_root/README.md"
 IDENTITY_ROOT="$test_root" scripts/check_project_identity.sh
 
 old_package='swe''den-core'
+mkdir -p "$test_root/.cargo-deny-advisory-dbs"
+printf '%s\n' "$old_package" \
+    >"$test_root/.cargo-deny-advisory-dbs/generated-advisory.md"
+IDENTITY_ROOT="$test_root" scripts/check_project_identity.sh
+
 printf 'run: cargo check -p %s\n' "$old_package" \
     >"$test_root/.github/workflows/ci.yml"
 

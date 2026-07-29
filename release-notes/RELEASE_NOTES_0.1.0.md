@@ -35,6 +35,8 @@ converge to `1.0.0`.
 - Locked RFC Editor sources provide checksum-verified offline references for
   URI, date/time, JSON, HTTP, caching, and 429 behavior.
 - A repository identity check rejects copied source-project names.
+- Shell validation respects declared POSIX shell and Bash interpreters, and
+  policy gates require no optional ripgrep installation on clean CI runners.
 
 ## Verification Required
 

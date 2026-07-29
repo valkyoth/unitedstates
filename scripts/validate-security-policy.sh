@@ -33,7 +33,15 @@ test -s "$report"
 grep -Eq '^Status: (AWAITING PENTEST|FINDINGS OPEN|PASS)$' \
     "$report"
 
-if rg -n '^\s*(unsafe\s*\{|unsafe\s+fn|unsafe\s+impl)' crates; then
+unsafe_matches="$(
+    find crates -type f -name '*.rs' \
+        -exec grep -n -E \
+        '^[[:space:]]*(unsafe[[:space:]]*[{]|unsafe[[:space:]]+fn|unsafe[[:space:]]+impl)' \
+        {} + ||
+        true
+)"
+if [ -n "$unsafe_matches" ]; then
+    printf '%s\n' "$unsafe_matches"
     echo "unsafe Rust is forbidden" >&2
     exit 1
 fi

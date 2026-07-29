@@ -3,6 +3,7 @@ set -eu
 
 cargo fmt --all --check
 scripts/check_shell_syntax.sh
+scripts/test-shell-syntax.sh
 scripts/check_project_identity.sh
 scripts/test-project-identity.sh
 scripts/check_doc_links.sh
